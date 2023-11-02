@@ -1,8 +1,7 @@
 import { FiArrowLeft } from "react-icons/fi";
-import CardList from "./cardList";
-import CradDetails from "./CardDetails";
 import LinkList from "./linkList";
-
+import CardListContainer from "../../container/cardListContainer";
+import CardDetailsContainer from "../../container/cardDetailsContainer";
 
 
 function AssembleThree() {
@@ -34,15 +33,15 @@ function AssembleThree() {
         <div class="px-4 mb-5 ">
             <div class="lg:flex -mx-2">
 
-                <div class="w-auto  px-2">
-                   <div class=" h-auto"><CardList/></div>
+                <div class="w-auto lg:w-1/5  px-2">
+                   <div class=" h-auto"><CardListContainer/></div>
                </div>
 
-                   <div class="w-auto px-2  lg:mb-0 mb-5 sm:mb-4 ">
-                       <div class=" h-auto"><CradDetails/></div>
+                   <div class="w-auto lg:w-3/5 px-2  lg:mb-0 mb-5 sm:mb-4 ">
+                       <div class=" h-auto"><CardDetailsContainer/></div>
                    </div>
 
-               <div class="w-full  mr-1 ml- sm:ml-  ">
+               <div class="w-auto lg:w-1/5  mr-1 ml- sm:ml-  ">
                     <div class=" h-auto"><LinkList/></div>
               </div>
 

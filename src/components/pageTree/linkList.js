@@ -4,8 +4,8 @@ import { PiShareNetworkLight } from "react-icons/pi";
 
 function LinkList(){
     return(
-        <div>
-            <div class="w-full rounded ">
+        <div className="">
+            <div class="w-full  rounded ">
       <div class="px- py-">
         <div>
           <ul className="mx-2 mt-">

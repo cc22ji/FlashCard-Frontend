@@ -1,8 +1,10 @@
 
 
-function CardList() {
+function CardList(props) {
+  console.log("cardlist page",props)
   return (
-   <div className="">
+    (props.Data.length===0)?null:
+   <div className="w-">
       <nav class="flex w-full lg:max-w-xs rounded items-center flex-wrap bg-teal-500 pt-4 px-2 ml- mr-24 mb-5 lg:mb-0 sm:mb-4 ">
       
  
@@ -19,12 +21,31 @@ function CardList() {
           <div>
              <ul className="pl-2 pb-2">
               <li class="mb-2">
-              <a href="#responsive-header" class="text-black text-base hover:text-white ">Card y</a>
+              <a href="#responsive-header" class="text-black text-base hover:text-white "><pre>Card {props.Data.length}</pre>
+              </a>
               </li>
 
               <li class="mb-2">
-              <a href="#responsive-header" class="  text-black text-base hover:text-white"><p>Card  67</p></a>
+              <a href="#responsive-header" class="  text-black text-base hover:text-white"><pre>Card {props.Data.length+1}</pre></a>
               </li>
+
+              <li class="mb-2">
+              <a href="#responsive-header" class="  text-black text-base hover:text-white"><pre>Card {props.Data.length+1}</pre>
+              </a>
+              </li>
+
+              <li class="mb-2">
+              <a href="#responsive-header" class="  text-black text-base hover:text-white"><pre>Card {props.Data.length+1}</pre>
+                </a>
+              </li>
+
+              <li class="mb-2">
+              <a href="#responsive-header" class="text-black text-base hover:text-white "><pre>Card {props.Data.length+1}</pre>
+              </a>
+              </li>
+
+              
+
              </ul>
           </div>
    </div>

@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 
-function CoverPage(props) {
+function ParentPage(props) {
 
   return (
 
@@ -18,23 +19,19 @@ function CoverPage(props) {
 
           <li class="mr-12">
             
-          <a class="text-white text-xl hover:text-blue-500" href="#">
+            <Link to="/home" class="text-white text-xl hover:text-blue-500">Create New</Link>
+          {/* <a class="text-white text-xl hover:text-blue-500" href="#">
               Create New
-            </a>
+            </a> */}
           </li>
           
 
           <li class="mt-4 md:mt-0">
-            <a class="text-white text-xl hover:text-blue-500" href="#">
+          <Link to="/card" class="text-white text-xl hover:text-blue-500">My FlashCard</Link>
+            {/* <a class="text-white text-xl hover:text-blue-500" href="#">
               My FlashCard
-             
-            </a>
+            </a> */}
           </li>
-
-          
-
-   
-          
         </div>
 
         <div className="text-white text-xl pb-4 px-4"><hr className="border-1"></hr></div>
@@ -44,12 +41,8 @@ function CoverPage(props) {
       </ul>
         
     </div>
-    
-
-   
-
     </div>
   );
 }
 
-export default CoverPage;
+export default ParentPage;
