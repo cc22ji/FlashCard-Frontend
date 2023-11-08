@@ -1,5 +1,6 @@
 import RenderForm from "../components/pageOne/renderForm";
 import { connect } from "react-redux";
+import DeleteAction from "../redux/action/DeleteAction"
 
 
 const storeSeJana = state=>{
@@ -8,7 +9,7 @@ const storeSeJana = state=>{
 
 
 const StoreMeAna = dispatch=>({
-    // ShowToHeaderSection : data=>dispatch(Action(data))
+    AddDeleteId : data_Id=>dispatch(DeleteAction(data_Id))
 });
 
 export default connect(storeSeJana,StoreMeAna)(RenderForm);

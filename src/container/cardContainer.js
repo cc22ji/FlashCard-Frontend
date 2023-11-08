@@ -1,5 +1,7 @@
 import Card from "../components/pageTwo/card";
 import { connect } from "react-redux";
+import FormAction from "../redux/action/action";
+import UpdateAction from "../redux/action/updateAction";
 
 
 const storeSeJana = state=>{
@@ -8,7 +10,7 @@ const storeSeJana = state=>{
 
 
 const StoreMeAna = dispatch=>({
-    // ShowToHeaderSection : data=>dispatch(Action(data))
+    addFromCard: data=>dispatch(UpdateAction(data))
 });
 
 export default connect(storeSeJana,StoreMeAna)(Card);

@@ -5,6 +5,8 @@ import FormContainer from "./container/formContainer"
 import Card from "./components/pageTwo/card";
 import CardContainer from "./container/cardContainer"
 import AssembleThree from "./components/pageTree/AssembleThree"
+import AssemblyThreeContainer from "./container/assemblyThreeContainer"
+import PageThreeContainer from "./container/PageThreeContainer"
 
 import { Provider } from "react-redux";
 import Store from "./redux/store"
@@ -21,7 +23,7 @@ function App() {
         <Routes>
         <Route path="/home" Component={FormContainer}/>
         <Route path="/card" Component={ CardContainer}/>    
-        <Route path="/details" Component={AssembleThree}/>
+        <Route path="/details" Component={AssemblyThreeContainer}/>
         </Routes>
         </ParentPage>
       </Background>

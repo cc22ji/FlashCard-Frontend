@@ -1,5 +1,5 @@
 import FormPage from "../components/pageOne/FormPage"
-import FormAction from "../redux/action"
+import action from "../redux/action/action";
 import { connect } from "react-redux";
 
 const StoreSejana = state=>({ 
@@ -8,7 +8,7 @@ const StoreSejana = state=>({
 
 //through this below we connect our form page to redux action page 
 const StoreMeAna = dispatch=>({
-    addToRedux : data=>dispatch(FormAction(data))
+    addToRedux : data=>dispatch(action(data))
 });
 
 

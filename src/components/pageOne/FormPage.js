@@ -2,22 +2,15 @@
 import { useRef } from "react";
 import { useFormik,Formik,Form,Field } from "formik";
 import RenderContainer from "../../container/renderContainer"
-
+import { useState } from "react";
+import RenderForm from "../pageOne/renderForm"
 
 const initialValues = {
  groupName : "",
  addDescription  : "",
  enterTerm: "",
   enterDefination:"",
-
 }
-
-// const onSubmit = (values,{ resetForm })=>{
-//   console.log("onsumbit",values );
-//   props.addToRedux(values)
-//   resetForm();
-// }
-
 
 const validate = values=>{
   let errors={}
@@ -40,37 +33,59 @@ const validate = values=>{
 
 
 function FormPage(props) {
-  
+  console.log("submit props",props)
  const FormImg = useRef();
  const  DetailImg = useRef();
+ const [idx,setIdx] = useState(0)
+ const [term ,setTerm] = useState("")
+ const [defination ,setDefination] = useState(null)
+ const [img ,setImg] = useState(null)
 
- const onSubmit = (values,{ resetForm })=>{
-  console.log("onsumbit",values );
+ function countIncreaseHandler(){
+  setIdx((count) => (count + 1) );
+  formik.submitForm();
+   }
+ const additionalData = {
+  id : `${Math.random().toString(36).substr(2, 9)}`,
+  index : {idx}
+ }
+
+ const onSubmit = (values,{ resetForm,})=>{
+  // const abc = [...values]
+  values.additionalData = additionalData;
+  console.log("onsumbit1",values );
+  console.log("onsumbit2 ",values.groupName );
   props.addToRedux(values)
-  // resetForm();
+  resetForm();
+  // console.log("submitted 2",abc)
+  
 }
-
+ function abcd(){
+     
+ }
 
  const formik = useFormik({
   initialValues,
   onSubmit,
-  validate
+  validate,
+  
  })
 
- function RenderData(){
-
- }
+ 
 
   return (
 
-    <Formik initialValues={initialValues} onSubmit={onSubmit} validate={validate} >
+    <Formik initialValues={initialValues} 
+    onSubmit={onSubmit} 
+    validate={validate} >
 
     <div className="mr-8">
     <div className=" justify-center w-full  ">
   
       {/* forms start here */}
-       <Form onSubmit={formik.handleSubmit}>
-        <div  class="w-full bg-blue-500 px-8 mx-4 border rounded ">
+       <Form onSubmit={formik.handleSubmit} >
+       
+        <div  class="w-full bg-blue-400 px-8 mx-4 border rounded ">
 
           {/* Group Name div */}
   <div class="flex flex-wrap -mx-3 mb-3 ">
@@ -78,7 +93,7 @@ function FormPage(props) {
       <label class="block uppercase  text-xs font-bold mb-2" for="group-name">
         Group Name*
       </label>
-      <Field class="  w-full bg-gray-200  border border-red-500 rounded py-3 px-4 mb-0 focus:outline-none focus:bg-white" id="group-name" type="text" placeholder="Group Name" name="groupName"
+      <Field class="  w-full bg-gray-200  border border-red-500 rounded py-3 px-4 mb-0 focus:outline-none focus:bg-white" id="group-name" type="text" placeholder="Group Name" name="groupName" 
        {...formik.getFieldProps("groupName")}
        />
       {
@@ -110,17 +125,19 @@ function FormPage(props) {
     </div>
    
     </div>
+    
     {/* end of first box */}
 
     {/*  second box form start here */}
 
     
-    <div  class=" w-full bg-blue-500 px-6 border rounded pt-7 mt-4 mx-4 mb-4">
+    <div  class=" w-full bg-blue-400 px-6 border rounded pt-7 mt-4 mx-4 mb-4">
 
 
 {/* rendreing data */}
       
-    <RenderContainer/>
+    {/* <RenderContainer  term={term}/> */}
+    {/* <RenderForm term={term}/> */}
 
 
     <div class="flex flex-wrap  mb-2 pb-4">
@@ -133,7 +150,7 @@ function FormPage(props) {
   <Field class=" w-full bg-gray-200  border border-red-500 rounded py-3 px-4   focus:outline-none focus:bg-white focus:border-gray-500" id="term-name" type="text" placeholder="Enter Term" name="enterTerm" 
   {...formik.getFieldProps("enterTerm")}
   />
-  {formik.touched.enterTerm && formik.errors.enterTerm?(<div>{formik.errors.enterTerm}</div>):null}
+  {/* {formik.touched.enterTerm && formik.errors.enterTerm?(<div>{formik.errors.enterTerm}</div>):null} */}
 </div>
 
 {/* enter defination div here */}
@@ -162,22 +179,30 @@ type="button"
 
 {/* add more div here */}
 <div className="ml-3 text-sm font-bold text-white mb-3 pb-4">
- <button href="#" type="button">+ Add More</button>
+ <button href="#" type="button" onClick={abcd}>+ Add More</button>
 </div>
 
 {/* create flashCard Buttton here */}
+{/* <div className="flex justify-around mt-4">
+<button class="bg-blue-500 hover:bg-blue-400 mb-4 text-black block uppercase text-xs font-bold py-2 px border-b-4 border-blue-700 hover:border-blue-500 rounded  w-56 md:w-64" type="submit" onClick={countIncreaseHandler}>
+Create FlashCard
+</button>
+</div>  */}
+    </div>
+    {/* end of second box form*/}
+</Form>
+
 <div className="flex justify-around mt-4">
-<button class="bg-blue-500 hover:bg-blue-400 mb-4 text-black block uppercase text-xs font-bold py-2 px border-b-4 border-blue-700 hover:border-blue-500 rounded  w-56 md:w-64" type="submit" >
+<button class="bg-blue-500 hover:bg-blue-400 mb-4 text-black block uppercase text-xs font-bold py-2 px border-b-4 border-blue-700 hover:border-blue-500 rounded  w-56 md:w-64" type="submit"  onClick={countIncreaseHandler}>
 Create FlashCard
 </button>
 </div>
 
     </div>
-    {/* end of second box form*/}
-</Form>
-    </div>
+    
     </div>
     </Formik>
+    
   );
 }
 export default FormPage;
