@@ -1,9 +1,11 @@
 import { createStore } from "redux";
 import reducer from "../redux/reducer/reducer"
 import combineReducers from "../redux/reducer/rootReducer"
-import DeleteReducer from "./reducer/DeleteReducer";
+import MainFormReducer from "./reducer/mainFormReducer";
+import rootReducer from "../redux/reducer/rootReducer";
+import CardReducer from "./reducer/CardReducer";
 
-const Store = createStore(reducer);
+const Store = createStore(rootReducer);
 
 // console.log("Store data" ,Store)
 

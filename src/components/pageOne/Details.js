@@ -108,3 +108,17 @@
 // }
 
 // export default Details;
+
+
+
+
+
+
+  
+
+
+
+
+
+
+

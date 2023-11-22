@@ -66,3 +66,28 @@
 // export default CardList;
 
 
+
+
+
+
+
+
+
+// {desciption div here}
+
+{ 
+    (change==true) ? (
+
+
+    <p class="text-gray-700 rounded-none text-base lg:h-48  ">
+       {props.Data.MidForm[currentSlide]["defination"]} </p>
+      
+
+       ) :
+
+
+       <p class="text-gray-700 rounded-none text-base lg:h-48  ">
+      {props.Data.MidForm[idxValue-1].defination} </p> 
+   
+    
+   }

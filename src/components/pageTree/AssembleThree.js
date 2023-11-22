@@ -3,6 +3,7 @@ import LinkList from "./linkList";
 import CardListContainer from "../../container/cardListContainer";
 import CardDetailsContainer from "../../container/cardDetailsContainer";
 import { Link } from "react-router-dom";
+import Header from "./Header";
 
 // for middle one imported items
 import mata from "../../images/mata.jpg"
@@ -13,18 +14,33 @@ import { useState } from "react";
 import {FiDownload,FiPrinter, } from "react-icons/fi";
 import { PiShareNetworkLight } from "react-icons/pi";
 
+let counts=[]
+
 
 function AssembleThree(props) {
-  console.log("page three  component",props.Data)
-  //  props.Data.map((items)=>
-    // console.log("aaaaaaaaaaaaaaa",props)
-  // )
+  console.log("Assemblr 3 data" , props)
 
-  const TotalForm = props.Data.length;
+  const current_index = props.Data.CardIndex.length-1
+  console.log("indx position" , current_index)
+    const idxValue = props.Data.CardIndex[current_index]
+    console.log("indx value" , idxValue)
+  
+  let count =0 
+  props.Data.MidForm.map((items)=>{
+     if(items.b === props.Data.MainForm[idxValue-1].additionalData.index.idx-1){
+         count = count + 1;
+      }  
+    })
+    console.log("card no 2",count)
+    counts.push(count)
+    console.log("chetan",counts)
+  // const TotalForm = props.Data.MidForm.length;
+  const TotalForm = count
   const [currentSlide, setCurrentSlide] = useState(0);
-
+  const [change, setChange] = useState(false);
+  
   function handlePrevSlide(){
-    setCurrentSlide((prevSlide) => (prevSlide + TotalForm - 1) % TotalForm);
+    setCurrentSlide((prevSlide) => (prevSlide + TotalForm - 1) % TotalForm)
   }
 
   function handlefrwdSlide(){
@@ -33,34 +49,18 @@ function AssembleThree(props) {
 
   function handleTermClick(index){
    setCurrentSlide(index)
+    setChange(true)
   }
- 
+  console.log("current slide",currentSlide)
 
   return (
 
-
-    (props.Data.length===0)?null:
+    (props.Data.MidForm.length===  0)?null:
     <div>
       <div class="flex-none lg:flex-wrap">
-        <div class="w-full  mb-4 bg-gray-500">
+       
 
-            <div className="flex p-3 mb-0 pb-1  place-items-center">
-              <Link to="/card"><FiArrowLeft/></Link>
-                {/* <FiArrowLeft/> */}
-                { props.Data.map((items)=>
-                <p className="pl-4 uppercase  text-sm font-semibold">
-                {items.groupName}
-                </p>
-                )}
-            </div>
-
-            <div>
-                <p className="pl-12 pr-2 pb-4">
-                {props.Data[0]["addDescription"]}
-                </p>
-            </div>
-        </div>
-
+        <Header change={change} currentSlide={currentSlide}/>
 
 
 
@@ -94,14 +94,16 @@ function AssembleThree(props) {
                                  <div>
                                     <ul className="pl-2 pb-2">
                                       {
-                                        props.Data.map((items)=>
+                                       props.Data.MidForm.map((items)=>
+                                      (items.b === props.Data.MainForm[idxValue-1].additionalData.index.idx-1)?(
                                      <li class="mb-2">
-                                     <button class="text-black text-base hover:text-white " onClick={() => handleTermClick(items.additionalData.index.idx)}>
-                                      {/* <pre>Card {items.additionalData.index.idx}</pre> */}
-                                       <p>{items.groupName}</p>
+                                     <button class="text-black text-base hover:text-white" 
+                                      onClick={() => handleTermClick(items.card_data.idx)} >
+                                    
+                                       <p>{items.card_data.term}</p>
                                      </button>
                                      </li>
-                                      ) }
+                                      ):null )}
                                     </ul>
                                  </div>
                           </div>
@@ -128,14 +130,64 @@ function AssembleThree(props) {
     <div class=" lg:w-full flex-grow lg:flex ">
 {/* Image render here */}
   <div class="h-48  lg:h-auto bg-white p-4 lg:w-48  bg-cover rounded-t  lg:rounded-l text-center overflow-hidden flex-shrink-0 ">
-    <img src={mata} className="w-auto sm:w-auto h-48 sm:h-48 lg:h-auto lg:w-48" />
+    <img 
+    // { 
+    //   (change==true) ? ({props.Data.MidForm[currentSlide]["defination"]}) : 
+    //     ({props.Data.MidForm[idxValue-1].defination} )
+    // }
+    className="w-auto sm:w-auto h-48 sm:h-48 lg:h-auto lg:w-48" />
   </div>
 
+
+
+
+
+
+
+
+
+
+
 {/* description term render div here */}
+      {/* {props.Data.MidForm[currentSlide]["defination"]}
+      {props.Data.MidForm[idxValue-1].defination} */}
     <div class=" p-2  w-full flex flex-col bg-white">
-      <p class="text-gray-700 rounded-none text-base lg:h-48  ">  
-      {props.Data[currentSlide]["enterDefination"]}
-      </p>
+    { 
+       (change==true) ? (
+
+        props.Data.MidForm.map((items)=>
+        (items.b === props.Data.MainForm[idxValue-1].additionalData.index.idx-1)?(
+        <p class="text-gray-700 rounded-none text-base lg:h-48  ">
+        {/* {props.Data.MidForm[currentSlide]["defination"]} </p>):null) */}
+        {items.card_data.idx==[currentSlide]?items.card_data.defination :null}
+        </p>):null)
+
+           ) :
+
+           props.Data.MidForm.map((items)=>
+           (items.b === props.Data.MainForm[idxValue-1].additionalData.index.idx-1)?(
+
+         <p class="text-gray-700 rounded-none text-base lg:h-48  ">
+        {/* {props.Data.MidForm[idxValue-1].defination} */}
+         {items.card_data.idx==[idxValue-1]?items.card_data.defination :null}
+         </p>
+         ) :null
+       
+        ) 
+      
+     }
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
 
 </div> 

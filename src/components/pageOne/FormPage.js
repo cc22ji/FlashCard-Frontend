@@ -1,15 +1,15 @@
 
+import { connect } from "react-redux";
+import MainFormAction from "../../redux/action/mainFormAction";
 import { useRef } from "react";
 import { useFormik,Formik,Form,Field } from "formik";
-import RenderContainer from "../../container/renderContainer"
-import { useState } from "react";
-import RenderForm from "../pageOne/renderForm"
+import { useState ,useEffect} from "react";
+import MiddleForm from "./middleForm";
+
 
 const initialValues = {
  groupName : "",
  addDescription  : "",
- enterTerm: "",
-  enterDefination:"",
 }
 
 const validate = values=>{
@@ -20,66 +20,55 @@ const validate = values=>{
   if(!values.addDescription){
     errors.addDescription = "Required"
   }
-  if(!values.enterTerm){
-    errors.enterTerm = "Required"
-  }
-  if(!values.enterDefination){
-   errors.enterDefination = "Required"
- }
-  
   return errors;
 }
 
 
-
 function FormPage(props) {
-  console.log("submit props",props)
+ 
  const FormImg = useRef();
- const  DetailImg = useRef();
  const [idx,setIdx] = useState(0)
- const [term ,setTerm] = useState("")
- const [defination ,setDefination] = useState(null)
- const [img ,setImg] = useState(null)
+ const [send,setSend] = useState(false)
+
 
  function countIncreaseHandler(){
-  setIdx((count) => (count + 1) );
-  formik.submitForm();
-   }
- const additionalData = {
-  id : `${Math.random().toString(36).substr(2, 9)}`,
-  index : {idx}
+  // if(props.Data.MidForm.length!==0){
+  setIdx(idx + 1)
+  // }
  }
 
- const onSubmit = (values,{ resetForm,})=>{
-  // const abc = [...values]
-  values.additionalData = additionalData;
-  console.log("onsumbit1",values );
-  console.log("onsumbit2 ",values.groupName );
-  props.addToRedux(values)
-  resetForm();
-  // console.log("submitted 2",abc)
-  
+ const additionalData = {
+  //  id : `${Math.random().toString(36).substr(2, 9)}`,
+   index : {idx}
+ }
+
+ const onSubmit = (values,{resetForm})=>{
+  values.additionalData = additionalData; 
+  setSend(true)
+  // if(props.Data.MidForm.length!==0){
+    props.MainPageDataAddedToRedux(values) 
+    resetForm();
+  // }
 }
- function abcd(){
-     
+ function form2Data(values){
+    console.log("values",values)
  }
 
  const formik = useFormik({
   initialValues,
   onSubmit,
   validate,
-  
  })
-
  
-
+ 
   return (
-
+  // <div key ={`${Math.random().toString(36).substr(2, 9)}`}>
     <Formik initialValues={initialValues} 
     onSubmit={onSubmit} 
-    validate={validate} >
+    validate={validate}
+    >
 
-    <div className="mr-8">
+    <div className="mr-8" >
     <div className=" justify-center w-full  ">
   
       {/* forms start here */}
@@ -128,81 +117,44 @@ function FormPage(props) {
     
     {/* end of first box */}
 
+
+
     {/*  second box form start here */}
-
-    
     <div  class=" w-full bg-blue-400 px-6 border rounded pt-7 mt-4 mx-4 mb-4">
-
-
-{/* rendreing data */}
-      
-    {/* <RenderContainer  term={term}/> */}
-    {/* <RenderForm term={term}/> */}
-
-
-    <div class="flex flex-wrap  mb-2 pb-4">
-
-{/* enter term div */}
-<div class="w-full md:w-2/6 px-3 mb-6 md:mb-0">
-  <label class="block uppercase  text-xs font-bold mb-2" for="term-name">
-    Enter Term
-  </label>
-  <Field class=" w-full bg-gray-200  border border-red-500 rounded py-3 px-4   focus:outline-none focus:bg-white focus:border-gray-500" id="term-name" type="text" placeholder="Enter Term" name="enterTerm" 
-  {...formik.getFieldProps("enterTerm")}
-  />
-  {/* {formik.touched.enterTerm && formik.errors.enterTerm?(<div>{formik.errors.enterTerm}</div>):null} */}
-</div>
-
-{/* enter defination div here */}
-<div class="w-full md:w-2/6 px-3  mb-6 md:mb-0">
-  <label class="block uppercase text-xs font-bold mb-2" for="term-defination">
-    Enter Defination
-  </label>
-  <Field class=" w-full bg-gray-200  border border-red-500 rounded py-3 px-4  focus:outline-none focus:bg-white focus:border-gray-500" id="term-defination" type="text" placeholder="Enter Defination" name="enterDefination"
-    {...formik.getFieldProps("enterDefination")}
-    />
-  {formik.touched.enterDefination && formik.errors.enterDefination?(<div>{formik.errors.enterDefination}</div>):null}
-</div>
-
-{/* image input button here */}
-<div class="w-full md:w-2/6 px-3  mb-2 md:mb-0 mt-5 md:mt-6 ">
-<input type="file" 
-ref={DetailImg} 
-hidden name="image2"></input>
-<button class=" w-full bg-gray-200 hover:bg-white  uppercase text-xs font-bold   border border-red-500 rounded h-12" 
-onClick={()=>{DetailImg.current.click()}} 
-type="button"
->Select Image</button>
-</div>
-</div>
-
-
-{/* add more div here */}
-<div className="ml-3 text-sm font-bold text-white mb-3 pb-4">
- <button href="#" type="button" onClick={abcd}>+ Add More</button>
-</div>
-
-{/* create flashCard Buttton here */}
-{/* <div className="flex justify-around mt-4">
-<button class="bg-blue-500 hover:bg-blue-400 mb-4 text-black block uppercase text-xs font-bold py-2 px border-b-4 border-blue-700 hover:border-blue-500 rounded  w-56 md:w-64" type="submit" onClick={countIncreaseHandler}>
-Create FlashCard
-</button>
-</div>  */}
+    <MiddleForm  send={send} idx={idx} formdata={formik.values} form2Data={form2Data}/>
     </div>
     {/* end of second box form*/}
-</Form>
 
-<div className="flex justify-around mt-4">
-<button class="bg-blue-500 hover:bg-blue-400 mb-4 text-black block uppercase text-xs font-bold py-2 px border-b-4 border-blue-700 hover:border-blue-500 rounded  w-56 md:w-64" type="submit"  onClick={countIncreaseHandler}>
+    <div className="flex justify-around mt-4">
+<button class="bg-blue-500 hover:bg-blue-400 mb-4 text-black block uppercase text-xs font-bold py-2 px border-b-4 border-blue-700 hover:border-blue-500 rounded  w-56 md:w-64" type="submit" onClick={countIncreaseHandler}  >
 Create FlashCard
 </button>
 </div>
 
+</Form>
+
     </div>
-    
     </div>
     </Formik>
+    //  </div>
     
   );
 }
-export default FormPage;
+
+
+
+
+const StoreSejana = state=>({ 
+  Data:state
+});
+
+//through this below we connect our form page to redux action page 
+const StoreMeAna = dispatch=>({
+  MainPageDataAddedToRedux : data=>dispatch(MainFormAction(data))
+});
+ export default connect(StoreSejana,StoreMeAna)(FormPage);
+
+
+
+
+
