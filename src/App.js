@@ -8,6 +8,7 @@ import AssembleThree from "./components/pageTree/AssembleThree"
 import AssemblyThreeContainer from "./container/assemblyThreeContainer"
 import PageThreeContainer from "./container/PageThreeContainer"
 import MainFormContainer from "./container/MainFormContainer"
+import Details from "./components/pageOne/Details";
 
 import { Provider } from "react-redux";
 import Store from "./redux/store"

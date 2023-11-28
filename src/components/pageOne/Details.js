@@ -8,9 +8,6 @@
 //   enterDefination:"",
 // };
 
-// const onSubmit= (values)=>{
-//   console.log("onSubmit values",values)
-// }
 
 // const validate =  values=>{
 //   let errors = {}
@@ -24,10 +21,15 @@
 // }
 
 
-// function Details(props){
-//   console.log("deatils props",props)
+// function Details(){
 
 //   const DetailImg =  useRef();
+
+//   const onSubmit= (values)=>{
+    
+//     values.preventDefault()
+//   }
+  
 
 //   const formik = useFormik({
 //     initialValues,
@@ -35,9 +37,6 @@
 //     validate,
 //    });
  
-// //  console.log("form values",formik.values)
-// //  console.log("form errors",formik.errors)
-// //  console.log("visited field",formik.touched)
 
 
 
@@ -87,20 +86,11 @@
 
 //   </div>
 //   <div className="ml-3 text-sm font-bold text-white mb-3 pb-4">
-//      <a href="#">+ Add More</a>
+//      <button type="">+ Add More</button>
 //   </div>
-//   <div className="flex justify-around mt-4">
-//     <button class="bg-blue-500 hover:bg-blue-400 mb-4 text-black block uppercase text-xs font-bold py-2 px border-b-4 border-blue-700 hover:border-blue-500 rounded  w-56 md:w-64" type="submit" onClick={props.onSubmit2}>
-//    Create FlashCard
-// </button>
-//     </div>
+  
 // </Form>
 //       </div>
-//       {/* <div className="flex justify-around mt-4">
-//     <button class="bg-blue-500 hover:bg-blue-400 mb-4 text-black block uppercase text-xs font-bold py-2 px border-b-4 border-blue-700 hover:border-blue-500 rounded  w-56 md:w-64" type="submit" onClick={onSubmit}>
-//    Create FlashCard
-// </button>
-//     </div> */}
       
 //       </div>
 //        </Formik>
