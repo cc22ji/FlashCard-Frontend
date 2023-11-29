@@ -1,17 +1,21 @@
 import {MAIN_FORM_DATA} from "../constant"
-import { DELETE_DATA } from "../constant";
 
+const inputlocal = localStorage.getItem('form-input');
 
-function MainFormReducer(state=[],MainFormAction){
+const initialState = {
+    stateData: inputlocal ? JSON.parse(inputlocal) : []
+}
+
+function MainFormReducer(state=initialState,MainFormAction){
     switch(MainFormAction.type){
         
         case MAIN_FORM_DATA : 
-         return[...state, MainFormAction.data ]
+        localStorage.setItem('form-input', JSON.stringify([...state.stateData, MainFormAction.data]));
+         return{
+            ...state,  
+            stateData : [...state.stateData ,MainFormAction.data] 
+        }
 
-        // case DELETE_DATA :
-        //     let data = state.filter((item, index) => index !== action.data_Idx);
-        //     return[...state , ...data]
-        
         default :
             return state
     }

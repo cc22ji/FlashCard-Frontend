@@ -87,14 +87,14 @@ function FormPage(props) {
           <Form onSubmit={formik.handleSubmit}>
             <div className="w-full bg-blue-400 px-8 mx-4 border rounded ">
               {/* Group Name div */}
-              <div class="flex flex-wrap -mx-3 mb-3 ">
-                <div class="w-full md:w-2/3 px-3  pt-6 md:mb-0">
+              <div className="flex flex-wrap -mx-3 mb-3 ">
+                <div className="w-full md:w-2/3 px-3  pt-6 md:mb-0">
                   <label
-                    class="block uppercase  text-xs font-bold mb-2" for="group-name">
+                    className="block uppercase  text-xs font-bold mb-2" htmlFor="group-name">
                     Group Name*
                   </label>
                   <Field
-                    class="  w-full bg-gray-200  border border-red-500 rounded py-3 px-4 mb-0 focus:outline-none focus:bg-white" id="group-name"  type="text" placeholder="Group Name" name="groupName"
+                    className="  w-full bg-gray-200  border border-red-500 rounded py-3 px-4 mb-0 focus:outline-none focus:bg-white" id="group-name"  type="text" placeholder="Group Name" name="groupName"
                     {...formik.getFieldProps("groupName")}
                   />
                   {formik.touched.groupName && formik.errors.groupName ? (
@@ -104,7 +104,7 @@ function FormPage(props) {
                   ) : null}
                 </div>
                 {/* image input */}
-                <div class="w-full md:w-2/6 px-3  mb-2 md:mb-0 mt-5 md:mt-12 ">
+                <div className="w-full md:w-2/6 px-3  mb-2 md:mb-0 mt-5 md:mt-12 ">
                   <input
                     type="file"
                     onChange={imageHandler}
@@ -113,7 +113,7 @@ function FormPage(props) {
                     hidden
                     name="image1"/>
                   <button
-                    class=" w-full bg-gray-200 hover:bg-white  uppercase text-xs font-bold   border border-red-500 rounded h-12"
+                    className=" w-full bg-gray-200 hover:bg-white  uppercase text-xs font-bold   border border-red-500 rounded h-12"
                     onClick={() => {
                       FormImg.current.click();
                     }}
@@ -124,16 +124,16 @@ function FormPage(props) {
               </div>
 
               {/* Group Description div */}
-              <div class=" md:pl-3 px-3 md:px-0 flex flex-wrap -mx-3 mb-3">
+              <div className=" md:pl-3 px-3 md:px-0 flex flex-wrap -mx-3 mb-3">
                 <label
-                  class="block uppercase  text-xs font-bold mb-2"
-                  for="group-desciption"
+                  className="block uppercase  text-xs font-bold mb-2"
+                  htmlFor="group-desciption"
                 >
                   Add Description
                 </label>
                 <Field
                   as="textarea"
-                  class=" w-full bg-gray-200 border border-red-500 rounded h-24 pt-2  px-4 mb-3 resize-none focus:outline-none focus:bg-white focus:border-gray-500"
+                  className=" w-full bg-gray-200 border border-red-500 rounded h-24 pt-2  px-4 mb-3 resize-none focus:outline-none focus:bg-white focus:border-gray-500"
                   id="group-desciption"
                   type="text"
                   placeholder="Add description"
@@ -151,7 +151,7 @@ function FormPage(props) {
             {/* end of upper form  */}
 
             {/*  mid form calls here */}
-            <div class=" w-full bg-blue-400 px-6 border rounded pt-7 mt-4 mx-4 mb-4">
+            <div className=" w-full bg-blue-400 px-6 border rounded pt-7 mt-4 mx-4 mb-4">
               <MiddleForm
                 form2Data={form2Data}
                 midFormDataArray={midFormDataArray}
@@ -159,9 +159,9 @@ function FormPage(props) {
             </div>
             {/* mid form ends here */}
 
-            <div className="flex justify-around mt-4">
+            <div className="flex justify-center ml-8 md:ml-0 mt-4">
               <button
-                class="bg-blue-500 hover:bg-blue-400 mb-4 text-black block uppercase text-xs font-bold py-2 px border-b-4 border-blue-700 hover:border-blue-500 rounded  w-56 md:w-64"
+                className="bg-blue-500 hover:bg-blue-400 mb-4 text-black block uppercase text-xs font-bold py-2  border-b-4 border-blue-700 hover:border-blue-500 rounded  w-56 md:w-64"
                 type="submit"
                 onClick={countIncreaseHandler}>
                 Create FlashCard
@@ -178,6 +178,8 @@ function FormPage(props) {
 const StoreSejana = (state) => ({
   Data: state,
 });
+
+
 
 //through this below we connect our form page to redux action page
 const StoreMeAna = (dispatch) => ({

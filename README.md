@@ -1,7 +1,62 @@
-# Getting Started with Create React App
+# Flash Card Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a pure frontend project which helps us to create various flashcards. 
 
+Here, we do add multiples card in a specified group. This help to maintain different cards in different groups.
+
+Also, we can see throughly details about each card and group as well.
+
+In this, we created three page home page, card page, details page.
+
+In home page we generally create our cards and combine it in one group.
+Note that- we cannot create card without creating group.
+
+In card page, we see group name of cards and how much cards a group have.We see the images we put for group name and a button to see the details of every card which is basically render our third page.
+
+In details page, we see every card here and every details about each acrd including term, defination, images.
+
+
+
+
+## Tech Stack
+
+**Client:**  React, Redux, TailwindCSS, Formik, react-icons, react-router-dom
+
+
+
+
+## Features
+
+- Live previews
+- Fully responsive webApp
+- Cross platform
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/cc22ji/flash_card
+```
+
+Go to the project directory
+
+```bash
+  cd flash_card
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm start
+```
 ## Available Scripts
 
 In the project directory, you can run:
@@ -14,57 +69,50 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+## Deployment
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For Deployment of this project we use render.
 
-### `npm run build`
+First the project is push to git and through render we connect our git with render. After this the deployment is so easy we set couple of terms and click for deployment.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Keep in mind during deployment put...
+* build command is  `npm install`
+* start command is `npm start`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Demo
+Here a link of demostartion video -
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+ - [FlashCard Generator](https://github.com/matiassingers/awesome-readme)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Hi, I'm Chetan! 👋
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## 🚀 About Me
+I'm a Student learning Full Stack web Development.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ 
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🛠 Skills
+React, Javascript, JSX, HTML, CSS, Bootstrap, tailwind,...
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🔗 Links
 
-### Making a Progressive Web App
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](www.linkedin.com/in/chetan-chouhan-06b954167)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Feedback
 
-### Deployment
+If you have any feedback, please reach out to me at chetanchouhan222@gmail.com
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contributions are always welcome!
+

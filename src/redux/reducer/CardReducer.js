@@ -4,7 +4,7 @@ import {UPDATE_DATA} from "../constant"
 function CardReducer(state=[],UpdateAction){
     switch(UpdateAction.type){
         case UPDATE_DATA : 
-    //    console.log("main form reducer data ",MainFormAction)
+        // localStorage.setItem('card-input', JSON.stringify([...state,UpdateAction.data]));
          
             return[
                 ...state,
